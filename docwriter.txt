@@ -1,0 +1,23 @@
+import org.apache.poi.xwpf.usermodel.*;
+
+public class DocumentCreator {
+
+    public void createDocument(String content, String fileName) throws Exception {
+        // create document
+        XWPFDocument document = new XWPFDocument();
+
+        // create paragraph
+        XWPFParagraph paragraph = document.createParagraph();
+
+        // create run
+        XWPFRun run = paragraph.createRun();
+
+        // set content of run
+        run.setText(content);
+
+        // save document
+        FileOutputStream out = new FileOutputStream(fileName);
+        document.write(out);
+        out.close();
+    }
+}
